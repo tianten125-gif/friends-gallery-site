@@ -3,41 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <title>Friends Gallery</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- LOGIN / INVITE SECTION -->
-  <div id="login-screen" class="screen">
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen">
     <h1>Friends Gallery</h1>
-    <p>Enter your invite code</p>
 
     <input
+      id="inviteCode"
       type="text"
-      id="inviteInput"
-      placeholder="Invite code"
-      autocomplete="off"
+      placeholder="Invitation code"
     />
 
-    <button id="enterBtn">Enter</button>
+    <p id="login-error"></p>
 
-    <p id="loginError" class="error"></p>
+    <button onclick="login()">Enter</button>
   </div>
 
-  <!-- GALLERY SECTION -->
-  <div id="gallery-screen" class="screen hidden">
-    <header>
-      <h2 id="galleryTitle">Gallery</h2>
-      <button id="logoutBtn">Logout</button>
-    </header>
+  <!-- APP SCREEN -->
+  <div id="app-screen" class="hidden">
+    <h2>Create Gallery</h2>
 
-    <div id="galleryContainer" class="gallery"></div>
+    <input
+      id="galleryName"
+      type="text"
+      placeholder="Gallery name"
+    />
+
+    <textarea
+      id="imageUrls"
+      placeholder="One image URL per line"
+    ></textarea>
+
+    <button onclick="createGallery()">Create Gallery</button>
+
+    <hr />
+
+    <div id="gallery-list"></div>
   </div>
 
-  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>
