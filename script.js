@@ -24,6 +24,8 @@ async function loadDB() {
 }
 
 function login() {
+  alert("login() is running");
+  
   const code = document.getElementById("inviteCode").value.trim();
   const error = document.getElementById("login-error");
 
