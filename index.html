@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Friends Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- LOGIN / INVITE SECTION -->
+  <div id="login-screen" class="screen">
+    <h1>Friends Gallery</h1>
+    <p>Enter your invite code</p>
+
+    <input
+      type="text"
+      id="inviteInput"
+      placeholder="Invite code"
+      autocomplete="off"
+    />
+
+    <button id="enterBtn">Enter</button>
+
+    <p id="loginError" class="error"></p>
+  </div>
+
+  <!-- GALLERY SECTION -->
+  <div id="gallery-screen" class="screen hidden">
+    <header>
+      <h2 id="galleryTitle">Gallery</h2>
+      <button id="logoutBtn">Logout</button>
+    </header>
+
+    <div id="galleryContainer" class="gallery"></div>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>
