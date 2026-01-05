@@ -1,8 +1,8 @@
-const GALLERIES_URL =
-  "https://raw.githubusercontent.com/tianten125/friends-gallery-db/main/galleries.json";
-
 const INVITES_URL =
-  "https://raw.githubusercontent.com/tianten125/friends-gallery-db/main/invite-codes.json";
+  "https://raw.githubusercontent.com/tianten125-gif/friends-gallery-db/refs/heads/main/invite-codes.json";
+
+const GALLERIES_URL =
+  "https://raw.githubusercontent.com/tianten125-gif/friends-gallery-db/refs/heads/main/galleries.json";
 
 let currentCode = null;
 let galleries = {};
@@ -10,15 +10,14 @@ let invites = {};
 
 async function loadDB() {
   try {
-    const gRes = await fetch(GALLERIES_URL);
-    if (!gRes.ok) throw new Error("Failed to load galleries.json");
-    galleries = await gRes.json();
-
     const iRes = await fetch(INVITES_URL);
-    if (!iRes.ok) throw new Error("Failed to load invite-codes.json");
+    if (!iRes.ok) throw new Error("Failed to load invite codes");
     invites = await iRes.json();
 
-    console.log("INVITES LOADED:", invites);
+    const gRes = await fetch(GALLERIES_URL);
+    if (!gRes.ok) throw new Error("Failed to load galleries");
+    galleries = await gRes.json();
+
     renderGalleries();
   } catch (err) {
     console.error("DB LOAD ERROR:", err);
@@ -52,6 +51,7 @@ function renderGalleries() {
 
   keys.forEach(code => {
     const gallery = galleries[code];
+
     const section = document.createElement("section");
     section.className = "gallery-section";
 
