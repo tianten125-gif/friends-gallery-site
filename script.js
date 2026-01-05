@@ -12,10 +12,10 @@ let invites = {};
 async function loadDB() {
   try {
     const gRes = await fetch(`${RAW_BASE}/${GALLERIES_FILE}`);
-    galleries = await gRes.json();
+    galleries = await gRes.ok ? await gRes.json() : {};
 
     const iRes = await fetch(`${RAW_BASE}/${INVITES_FILE}`);
-    invites = await iRes.json();
+    invites = iRes.ok ? await iRes.json() : {};
 
     renderGalleries();
   } catch (err) {
@@ -24,8 +24,6 @@ async function loadDB() {
 }
 
 function login() {
-  alert("login() is running");
-  
   const code = document.getElementById("inviteCode").value.trim();
   const error = document.getElementById("login-error");
 
@@ -42,6 +40,7 @@ function login() {
   }
 
   currentCode = code;
+
   document.getElementById("login-screen").classList.add("hidden");
   document.getElementById("app-screen").classList.remove("hidden");
 }
@@ -101,7 +100,7 @@ function createGallery() {
   };
 
   renderGalleries();
-  alert("Gallery created locally ✅ (saving to GitHub comes next)");
+  alert("Gallery created locally ✅ (saving comes later)");
 }
 
 loadDB();
